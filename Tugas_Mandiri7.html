@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8fafc;
+        }
+
+        header {
+            background: #1e293b;
+            color: #fff;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .hero button {
+            padding: 12px 25px;
+            background: #38bdf8;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 16px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .hero button:hover {
+            background: #0284c7;
+        }
+
+        .section {
+            padding: 80px 50px;
+            text-align: center;
+            background-color: #fff;
+        }
+        
+        .section:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+
+        .section h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        .section>p {
+            max-width: 700px;
+            margin: 0 auto 50px;
+            color: #64748b;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #475569;
+        }
+        .testimonial-author {
+            font-weight: bold;
+            color: #1e293b;
+        }
+
+        .pricing-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .pricing-card h4 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #0f172a;
+        }
+        .price {
+            font-size: 36px;
+            font-weight: bold;
+            color: #38bdf8;
+            margin-bottom: 20px;
+        }
+        .price span {
+            font-size: 16px;
+            color: #64748b;
+            font-weight: normal;
+        }
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .pricing-features li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .pricing-features li::before {
+            content: "✓";
+            color: #10b981;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .pricing-card button {
+            width: 100%;
+            padding: 12px;
+            background: #1e293b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        .pricing-card button:hover {
+            background: #334155;
+        }
+        .pricing-card.featured {
+            border: 2px solid #38bdf8;
+            transform: scale(1.05);
+        }
+        .pricing-card.featured button {
+            background: #38bdf8;
+        }
+        .pricing-card.featured button:hover {
+            background: #0284c7;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: #fff;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            background: #f8fafc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #1e293b;
+        }
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            color: #475569;
+        }
+        /* Trick for simple HTML/CSS accordion without JS */
+        .faq-toggle:checked ~ .faq-answer {
+            max-height: 200px;
+            padding: 20px;
+        }
+        .faq-toggle:checked ~ .faq-question .icon {
+            transform: rotate(45deg);
+        }
+        .faq-toggle {
+            display: none;
+        }
+        .faq-question .icon {
+            transition: transform 0.3s;
+            font-size: 20px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #1e293b;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+        }
+        .form-group textarea {
+            resize: vertical;
+            height: 120px;
+        }
+        .contact-form button {
+            width: 100%;
+            padding: 15px;
+            background: #38bdf8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .contact-form button:hover {
+            background: #0284c7;
+        }
+
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 30px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            nav ul li {
+                margin: 5px 10px;
+            }
+            .hero h2 {
+                font-size: 32px;
+            }
+            .pricing-card.featured {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Nio.id</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#features">Fitur</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#testimonials">Testimoni</a></li>
+                <li><a href="#pricing">Harga</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h2>Tingkatkan Potensi Bisnis Anda</h2>
+        <p>Platform digital modern yang dirancang khusus untuk mempercepat pertumbuhan dan efisiensi operasional perusahaan Anda.</p>
+        <button onclick="document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})">Jelajahi Solusi Kami</button>
+    </section>
+
+    <section class="section" id="features">
+        <h3>Keunggulan Platform Kami</h3>
+        <p>Nikmati serangkaian kemampuan canggih yang siap membantu Anda mengoptimalkan setiap aspek pekerjaan secara terukur.</p>
+        <div class="cards">
+            <div class="card">
+                <div style="font-size: 40px; margin-bottom: 15px;">⚡</div>
+                <h4>Performa Kilat</h4>
+                <p style="margin-top: 10px; color: #64748b;">Waktu proses yang minimal berkat arsitektur canggih kami, memastikan tidak ada detik yang terbuang sia-sia.</p>
+            </div>
+            <div class="card">
+                <div style="font-size: 40px; margin-bottom: 15px;">🛡️</div>
+                <h4>Proteksi Data Maksimal</h4>
+                <p style="margin-top: 10px; color: #64748b;">Dilengkapi dengan sistem keamanan berlapis untuk menjamin kerahasiaan dan integritas informasi berharga Anda.</p>
+            </div>
+            <div class="card">
+                <div style="font-size: 40px; margin-bottom: 15px;">✨</div>
+                <h4>Desain Intuitif</h4>
+                <p style="margin-top: 10px; color: #64748b;">Tanpa kurva belajar yang curam. Tampilan antarmuka kami dirancang agar ramah pengguna dari segala kalangan.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="about" style="background-color: #fff;">
+        <h3>Siapa Kami?</h3>
+        <p>Sebuah kolaborasi dari para ahli teknologi dan pakar strategi yang berdedikasi untuk menciptakan ekosistem digital yang adaptif dan inovatif demi kesuksesan klien kami di masa depan.</p>
+    </section>
+
+    <section class="section" id="testimonials">
+        <h3>Cerita Sukses Klien Kami</h3>
+        <p>Lihat bagaimana solusi inovatif kami telah mentransformasi berbagai skala usaha.</p>
+        <div class="cards">
+            <div class="card">
+                <div style="font-size: 30px; color: #fbbf24; margin-bottom: 10px;">★★★★★</div>
+                <p class="testimonial-text">"Implementasi platform ini benar-benar mengubah cara kami bekerja. Alur kerja menjadi jauh lebih mulus dan target lebih cepat tercapai."</p>
+                <p class="testimonial-author">- Nicholas De Jong, Direktur TechIndo</p>
+            </div>
+            <div class="card">
+                <div style="font-size: 30px; color: #fbbf24; margin-bottom: 10px;">★★★★★</div>
+                <p class="testimonial-text">"Tim support-nya sangat responsif dan solutif. Kami tidak pernah merasa sendirian saat menghadapi kendala teknis. Luar biasa!"</p>
+                <p class="testimonial-author">- Alexander Luigi, Pendiri TokoSepatu</p>
+            </div>
+            <div class="card">
+                <div style="font-size: 30px; color: #fbbf24; margin-bottom: 10px;">★★★★☆</div>
+                <p class="testimonial-text">"Investasi yang sangat menguntungkan. Hanya dalam beberapa bulan, efisiensi operasional kami melonjak tajam melampaui ekspektasi awal."</p>
+                <p class="testimonial-author">- Leonardo Di Caprio, Head of Marketing</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="pricing" style="background-color: #fff;">
+        <h3>Pilihan Investasi Bisnis</h3>
+        <p>Temukan paket langganan yang paling pas untuk mendukung fase pertumbuhan organisasi Anda saat ini.</p>
+        <div class="cards">
+            <!-- Paket Basic -->
+            <div class="card pricing-card">
+                <div>
+                    <h4>Starter</h4>
+                    <div class="price">Rp 99k<span>/bln</span></div>
+                    <ul class="pricing-features">
+                        <li>Maksimal 5 akun pengguna</li>
+                        <li>Kapasitas penyimpanan 10GB</li>
+                        <li>Dukungan bantuan via email</li>
+                        <li>Akses fitur-fitur esensial</li>
+                    </ul>
+                </div>
+                <button>Mulai Berlangganan</button>
+            </div>
+            <!-- Paket Pro (Featured) -->
+            <div class="card pricing-card featured">
+                <div>
+                    <h4 style="color: #38bdf8;">Business</h4>
+                    <div class="price">Rp 299k<span>/bln</span></div>
+                    <ul class="pricing-features">
+                        <li>Hingga 50 akun pengguna</li>
+                        <li>Kapasitas penyimpanan 100GB</li>
+                        <li>Layanan prioritas (Chat & Email)</li>
+                        <li>Akses dashboard analitik</li>
+                        <li>Integrasi API pihak ketiga</li>
+                    </ul>
+                </div>
+                <button>Pilih Paket Ini</button>
+            </div>
+            <!-- Paket Enterprise -->
+            <div class="card pricing-card">
+                <div>
+                    <h4>Corporate</h4>
+                    <div class="price">Rp 899k<span>/bln</span></div>
+                    <ul class="pricing-features">
+                        <li>Akun pengguna tanpa batas</li>
+                        <li>Penyimpanan cloud tak terbatas</li>
+                        <li>Dukungan telepon VIP 24/7</li>
+                        <li>Dedicated Account Manager</li>
+                        <li>White-label & kustomisasi penuh</li>
+                    </ul>
+                </div>
+                <button>Konsultasi Sekarang</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="faq">
+        <h3>Pusat Bantuan Cepat (FAQ)</h3>
+        <p>Informasi ringkas seputar layanan kami yang mungkin sedang Anda cari atau butuhkan.</p>
+        <div class="faq-container">
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+                <input type="checkbox" id="faq1" class="faq-toggle">
+                <label for="faq1" class="faq-question">
+                    Bisakah saya mencoba layanannya terlebih dahulu? <span class="icon">+</span>
+                </label>
+                <div class="faq-answer">
+                    Tentu. Kami menawarkan periode uji coba tanpa biaya selama 14 hari penuh untuk mengeksplorasi fitur premium kami, yang dapat dibatalkan tanpa syarat.
+                </div>
+            </div>
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+                <input type="checkbox" id="faq2" class="faq-toggle">
+                <label for="faq2" class="faq-question">
+                    Bagaimana cara melakukan pembayaran tagihan? <span class="icon">+</span>
+                </label>
+                <div class="faq-answer">
+                    Platform kami mendukung transaksi via bank transfer, virtual account, berbagai jenis kartu kredit/debit, hingga dompet digital terkemuka seperti GoPay dan OVO.
+                </div>
+            </div>
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+                <input type="checkbox" id="faq3" class="faq-toggle">
+                <label for="faq3" class="faq-question">
+                    Apakah ada biaya tersembunyi saat berhenti berlangganan? <span class="icon">+</span>
+                </label>
+                <div class="faq-answer">
+                    Sama sekali tidak. Anda bebas menghentikan layanan kapan pun langsung dari dashboard akun Anda tanpa dikenakan penalti atau biaya tambahan apa pun.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contact" style="background-color: #fff;">
+        <h3>Mari Berdiskusi</h3>
+        <p>Ingin berkonsultasi mengenai kebutuhan spesifik Anda? Tim spesialis kami siap mendengarkan dan memberikan solusi terbaik.</p>
+        
+        <div class="contact-form">
+            <form onsubmit="event.preventDefault(); alert('Pesan Anda telah berhasil dikirim! Kami akan segera menghubungi Anda. (Demo)');">
+                <div class="form-group">
+                    <label for="name">Nama Anda</label>
+                    <input type="text" id="name" name="name" placeholder="Siapa nama Anda?" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Aktif</label>
+                    <input type="email" id="email" name="email" placeholder="alamat@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Topik Diskusi</label>
+                    <input type="text" id="subject" name="subject" placeholder="Apa yang ingin Anda bicarakan?">
+                </div>
+                <div class="form-group">
+                    <label for="message">Tuliskan Pesan Anda</label>
+                    <textarea id="message" name="message" placeholder="Jelaskan kebutuhan atau pertanyaan Anda di sini..." required></textarea>
+                </div>
+                <button type="submit">Kirim Pesan Sekarang</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Nio.id . All rights reserved.</p>
+        <p style="margin-top: 10px; font-size: 14px;">Dipersembahkan dengan ❤️ untuk mendorong inovasi bisnis Anda.</p>
+    </footer>
+</body>
+
+</html>
